@@ -1,0 +1,146 @@
+---
+title: "Marriage Licence Statistics"
+author: 
+  - Fangning Zhang
+thanks: "Code and data are available at: LINK."
+date: today
+date-format: long
+abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+format: pdf
+number-sections: true
+bibliography: references.bib
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+data <- read_csv(here::here("data/analysis_data/analysis_data.csv"))
+
+
+```
+
+
+# Introduction
+
+You can and should cross-reference sections and sub-sections. We use @opendatatorotno, and @rohan.
+
+The remainder of this paper is structured as follows. @sec-mydatasection
+
+
+
+# Data {#sec-data}
+
+
+```{r}
+#| label: fig-bills
+#| fig-cap: Bills of penguins
+#| echo: false
+
+data |> 
+  ggplot(aes(x = date, y = marriage_licenses)) +
+  geom_point()
+
+```
+
+Talk more about it.
+
+Graph Analysis
+Generally, the number of marriage licenses issued remains relatively stable, but there are some noticeable outliers where the number of licenses issued is significantly higher. This could be due to holidays, special events, or other socio-cultural factors influencing the number of marriages.
+There are also some dates with very low or even zero license issuance, which could be due to fewer marriages on those dates or potential gaps in data collection.
+
+Cross-Reference
+the number of marriage licenses issued fluctuates significantly over time. For further analysis, it would be useful to correlate these dates with potential influencing factors such as policy changes, major holidays, or other events to understand the underlying causes of these variations.
+
+Talk way more about it. 
+
+
+
+# Model
+
+The goal of our modelling strategy is twofold. Firstly,...
+
+Here we briefly describe the Bayesian analysis model used to investigate... Background details and diagnostics are included in [Appendix -@sec-model-details].
+
+## Model set-up
+
+Define $y_i$ as the number of seconds that the plane remained aloft. Then $\beta_i$ is the wing width and $\gamma_i$ is the wing length, both measured in millimeters.  
+
+\begin{align} 
+y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
+\mu_i &= \alpha + \beta_i + \gamma_i\\
+\alpha &\sim \mbox{Normal}(0, 2.5) \\
+\beta &\sim \mbox{Normal}(0, 2.5) \\
+\gamma &\sim \mbox{Normal}(0, 2.5) \\
+\sigma &\sim \mbox{Exponential}(1)
+\end{align}
+
+We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
+
+
+### Model justification
+
+We expect a positive relationship between the size of the wings and time spent aloft. In particular...
+
+We can use maths by including latex between dollar signs, for instance $\theta$.
+
+
+# Results
+
+Our results are summarized in @tbl-modelresults.
+
+
+
+
+
+
+# Discussion
+
+## First discussion point {#sec-first-point}
+
+If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
+
+## Second discussion point
+
+## Third discussion point
+
+## Weaknesses and next steps
+
+Weaknesses and next steps should also be included.
+
+\newpage
+
+\appendix
+
+# Appendix {-}
+
+
+# Additional data details
+
+# Model details {#sec-model-details}
+
+## Posterior predictive check
+
+In @fig-ppcheckandposteriorvsprior-1 we implement a posterior predictive check. This shows...
+
+In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. This shows... 
+
+
+## Diagnostics
+
+@fig-stanareyouokay-1 is a trace plot. It shows... This suggests...
+
+@fig-stanareyouokay-2 is a Rhat plot. It shows... This suggests...
+
+
+
+
+
+\newpage
+
+
+# References
+
+
